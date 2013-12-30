@@ -1,4 +1,4 @@
-function testMethod(){
+function testMethod(test){
 	var a;
 	a = 2;
 	
@@ -11,4 +11,8 @@ function testMethod(){
 	d = 10;
 	c *= d;
 
+}
+
+function add(a, b){
+	return a + b;
 }
