@@ -1,1 +1,0 @@
-function fnAnnotatesArgumentsAndReturnStatements(a){return a};fnAnnotatesArgumentsAndReturnStatements("test")
