@@ -13,9 +13,6 @@ function testMethod(test){
 
 }
 
-// Todo: turn these into specs
-// need to break up add into two functions, return statement handling and param handling
-
 function add(a, b){
 	return a + b;
 }
@@ -27,3 +24,8 @@ function singleVar(){
 function multiVar(){
 	var a = 1, b = 2,c = 3;
 }
+
+testMethod();
+add(3,4);
+singleVar();
+multiVar();
