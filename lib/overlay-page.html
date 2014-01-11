@@ -44,7 +44,7 @@
 
 
 				$('.annotated-element').on('mouseenter', function(){
-					annotationElement.text($(this).data('annotation-value'));
+					annotationElement.html($(this).data('annotation-value'));
 					annotationElement.css({
 						top: $(this).offset().top - annotationElement.height() - 6,
 						left: $(this).offset().left
