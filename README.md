@@ -1,7 +1,7 @@
 vAnnotate
 =========
 
-Renders Javascript code with annotations on variables showing example values. 
+Generates Javascript code annotations on variables, showing their real-use values.
 
 ## node lib/vAnnotate.js
 

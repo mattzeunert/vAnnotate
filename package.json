@@ -1,8 +1,8 @@
 {
   "name": "vAnnotate",
-  "version": "0.0.0",
-  "description": "Generate variable annotations for Javascript code.",
-  "main": " ",
+  "version": "0.0.1",
+  "description": "Generate Javascript code annotations",
+  "main": "./lib/vAnnotate",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +15,12 @@
   "bugs": {
     "url": "https://github.com/mattzeunert/vAnnotate/issues"
   },
+  "keyword": [
+    "documentation", "code", "logging"
+  ],
+  "bin": {
+      "vAnnotate": "./bin/vAnnotate"
+    },
   "dependencies": {
     "jasmine-node": "~1.12.0",
     "esprima": "~1.0.4",
