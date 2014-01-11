@@ -3,7 +3,7 @@ vAnnotate
 
 Renders Javascript code with annotations on variables showing example values. 
 
-## node lib/vAnnotate.js server
+## node lib/vAnnotate.js
 
 This will make the current directory accessible at localhost:3000. So if the current folder contains a test.html file you can access it at http://localhost:3000/test.html.
 
