@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://localhost:3000/vAnnotate/results/functions-and-variables.js -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></head><body style="">
+		<style>
+			.annotated-element {
+				display: inline-block;
+				border: 1px solid #ff7777;
+				padding: 5px;
+				padding-bottom: 2px;
+				padding-top: 2px;
+				margin-top: 2px;
+				margin-bottom: 2px;
+			}
+			.annotated-element:hover {
+				background: #ffaaaa
+			}
+
+			.annotation {
+				position: absolute;
+				background: rgba(0,0,0,.8);
+				padding: 5px;
+				padding-top: 2px;
+				padding-bottom: 2px;
+				border-radius: 5px;
+				color: white;
+			}
+
+			pre {
+				font-family: Droid Sans;
+			}
+		</style>
+		<link href="./functions-and-variables.js_files/css" rel="stylesheet" type="text/css">
+
+		<pre>function testMethod(<div class="annotated-element" data-annotation-value="undefined">test</div>){
+	var <div class="annotated-element" data-annotation-value="2">a</div> = 1 + 1;
+	
+	console.log(a)
+	
+	<div class="annotated-element" data-annotation-value="test">a</div> = 'test';
+
+	var <div class="annotated-element" data-annotation-value="undefined">c</div>,<div class="annotated-element" data-annotation-value="undefined">d</div>;
+	<div class="annotated-element" data-annotation-value="5">c</div> = 5;
+	<div class="annotated-element" data-annotation-value="10">d</div> = 10;
+	<div class="annotated-element" data-annotation-value="50">c</div> *= d;
+
+}
+
+function add(<div class="annotated-element" data-annotation-value="3">a</div>, <div class="annotated-element" data-annotation-value="4">b</div>){
+	<div class="annotated-element" data-annotation-value="7">return</div> a + b;
+}
+
+function singleVar(){
+	var <div class="annotated-element" data-annotation-value="5">a</div> = 5;
+}
+
+function multiVar(){
+	var <div class="annotated-element" data-annotation-value="1">a</div> = 1, <div class="annotated-element" data-annotation-value="2">b</div> = 2,<div class="annotated-element" data-annotation-value="3">c</div> = 3;
+}
+
+testMethod();
+add(3,4);
+singleVar();
+multiVar();
+</pre>
+		<script src="./functions-and-variables.js_files/jquery-1.10.1.js"></script>
+
+
+		<script>
+			$(document).ready(function(){
+				var annotationElement = $('<div>')
+					.addClass('annotation')
+					.hide()
+					.appendTo('body');
+
+
+				$('.annotated-element').on('mouseenter', function(){
+					annotationElement.html($(this).data('annotation-value'));
+					annotationElement.css({
+						top: $(this).offset().top - annotationElement.height() - 6,
+						left: $(this).offset().left
+					})
+					annotationElement.show();
+				});
+
+				$('.annotated-element').on('mouseleave', function(){
+					annotationElement.hide();
+				});
+
+			});
+		</script>
+	
+<div class="annotation" style="top: 150px; left: 87px; display: none;">undefined</div></body></html>

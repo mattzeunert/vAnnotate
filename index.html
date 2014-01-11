@@ -1,1 +1,38 @@
-Github page test
+<!doctype html>
+<html>
+	<head>
+		<title>vAnnotate - annotate Javascript code with variable values from execution logs</title>
+	</head>
+	<body>
+		<style>
+		body {
+			line-height: 1.5em;
+		}
+		</style>
+		<h1>vAnnotate</h1>
+
+		<p>
+			vAnnotated annotates Javascript files with the values of local variables from when the program was running.
+		</p>
+
+		<a href="/functions-and-variables.js.html">See an example of an annotated file</a>
+		<br><br>
+		<a href="https://github.com/mattzeunert/vAnnotate">vAnnotate on Github</a>
+
+		<h2>How it works</h2>
+
+		<p>
+			vAnnotates requires a static html page that loads external Javascript code.
+		</p>
+		<p>
+			The vAnnotate command (installable using `npm install vAnnotate -g`) then creates a local server that can be used to open the html file (At http://localhost:3000/filename.html). 
+			When the browser requests the referenced Javascript code vAnnotate injects logging code to keep of variable assignments etc.
+		</p>
+		<p>
+			Then the annotated files can be viewed at <a href="http://localhost:3000/vAnnotate/results/">http://localhost:3000/vAnnotate/results/</a>
+		</p>
+		
+		
+
+	</body>
+</html>
