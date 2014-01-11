@@ -1,0 +1,1 @@
+function fnAnnotatesArgumentsAndReturnStatements3(){return Math.sqrt(9)};fnAnnotatesArgumentsAndReturnStatements3()
