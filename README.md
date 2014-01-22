@@ -12,4 +12,4 @@ The page will list all involved Javascript files and link to their annotated ver
 
 ## node lib/vAnnotate.js static-site-directory html-file-path output-directory
 
-This will generate html files in the output-directory containing the annoteated JS.
+This will generate html files in the output-directory containing the annotated JS.
