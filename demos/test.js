@@ -1,41 +1,36 @@
-function maker(obj){
-	return obj;
+
+var namespace = {
+  maker: function(obj){
+    return obj;
+  }
 }
 
-var a = 44;
+ var maker = function(obj){
+    return obj;
+  }
 
-// Inside objects
 
-var thing = {
+
+
+var thing = {};
+thing= maker({
 	sayHi: function(){
 		var ret = 4 * 2;
-		return ret;
-	}
-};
-
-thing.sayHi();
-
-// Maker functions
-
-var thing = maker({
-	sayHi: function(){
-		var ret = 4 * 2;
+    console.log(ret);
 		return ret;
 	}
 });
 
 thing.sayHi();
 
-//nested object
 
-var thing = {
-	a: {
-		sayHi: function(){
-			var ret = 4 * 2;
-			return ret;
-		}
-	}
-};
+var thing = {};
+var thing= maker({
+  sayHi: function(){
+    var ret = 4 * 2;
+    console.log(ret);
+    return ret;
+  }
+});
 
-thing.a.sayHi();
-
+thing.sayHi();
