@@ -35,7 +35,6 @@ var thing= maker({
 
 thing.sayHi();
 */
-var a = {};
-var b = 33;
-a.b = b;
-a.sth = 555;
+
+a = {};
+a.ss = 5 + 4;

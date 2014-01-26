@@ -18,3 +18,7 @@ Serves the supplied path to collect annotation data.
 
 This will generate html files in the output-directory containing the annotated JS.
 
+## Known limitations
+
+- Logging assignments to member expressions can currently have side effects. For example if you run `a[fn()] = b` fn will be called twice - once for the assignment and once for the logging call.  
+To fix this we need to move the object properties to separate variables before doing the assignment and the logging.
