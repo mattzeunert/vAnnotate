@@ -38,3 +38,7 @@ thing.sayHi();
 
 a = {};
 a.ss = 5 + 4;
+
+var a = function(){
+  line1 = 2;
+}
