@@ -42,3 +42,8 @@ a.ss = 5 + 4;
 var a = function(){
   line1 = 2;
 }
+
+// for loop
+for (var i=0; i<3;i++){
+
+}
