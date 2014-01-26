@@ -1,4 +1,4 @@
-
+/*
 var namespace = {
   maker: function(obj){
     return obj;
@@ -34,3 +34,8 @@ var thing= maker({
 });
 
 thing.sayHi();
+*/
+var a = {};
+var b = 33;
+a.b = b;
+a.sth = 555;
