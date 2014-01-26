@@ -16,4 +16,5 @@ Serves the supplied path to collect annotation data.
 
 ## vAnnotate static-site-directory html-file-path output-directory
 
-This will generate html files in the output-directory containing the annoteated JS.
+This will generate html files in the output-directory containing the annotated JS.
+
