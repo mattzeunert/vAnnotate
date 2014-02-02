@@ -47,3 +47,7 @@ var a = function(){
 for (var i=0; i<3;i++){
 
 }
+
+if (true){
+  var hidden = "you can't find me";
+}
