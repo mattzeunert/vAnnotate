@@ -35,7 +35,7 @@ var thing= maker({
 
 thing.sayHi();
 */
-
+/*
 a = {};
 a.ss = 5 + 4;
 
@@ -52,3 +52,21 @@ if (true){
   var obj = {};
   obj.hidden = "you can't find me";
 }
+*/
+function test(){
+    return function(){
+            var a = 5;
+            document.title= a;
+        }
+}
+test()();
+
+var obj = {
+    fn: function(){
+        return function(){
+            var a = 5;
+            document.title= a;
+        }
+    }
+}
+obj.fn()()
