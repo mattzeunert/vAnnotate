@@ -1,3 +1,8 @@
+(function(){
+    var a = 5;
+    document.title = 5;
+}).call();
+
 /*
 var namespace = {
   maker: function(obj){
