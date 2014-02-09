@@ -1,8 +1,21 @@
+// If statement with an expression statement instead of a body/block statement
+
+function test(arg){
+    if (!arg) return;
+    alert(arg);
+}
+
+test('hi');
+
+/*
+
+Function defined inside a Member Expression:
+
 (function(){
     var a = 5;
     document.title = 5;
 }).call();
-
+*/
 /*
 var namespace = {
   maker: function(obj){
@@ -58,6 +71,7 @@ if (true){
   obj.hidden = "you can't find me";
 }
 */
+/*
 function test(){
     return function(){
             var a = 5;
@@ -75,3 +89,4 @@ var obj = {
     }
 }
 obj.fn()()
+*/
