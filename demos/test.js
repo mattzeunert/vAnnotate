@@ -1,4 +1,12 @@
 
+function registerLoggingCallback( ) {
+  return function( callback ) {
+    var a = 'kkkkk';
+  };
+}
+
+registerLoggingCallback()()
+
 
 // Assigning a function expression, should log arguments
 var a = function(a,b){
