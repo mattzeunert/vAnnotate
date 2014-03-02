@@ -1,3 +1,11 @@
+
+
+// Assigning a function expression, should log arguments
+var a = function(a,b){
+
+}
+
+
 // If statement with an expression statement instead of a body/block statement
 
 function test(arg){
@@ -7,16 +15,14 @@ function test(arg){
 
 test('hi');
 
-/*
 
-Function defined inside a Member Expression:
+//Function defined inside a Member Expression:
 
 (function(){
     var a = 5;
     document.title = 5;
 }).call();
-*/
-/*
+
 var namespace = {
   maker: function(obj){
     return obj;
@@ -52,7 +58,18 @@ var thing= maker({
 });
 
 thing.sayHi();
-*/
+
+
+function gggg(a,b){
+  a= 222;
+}
+gggg(5,'test');
+
+
+
+
+
+
 /*
 a = {};
 a.ss = 5 + 4;
