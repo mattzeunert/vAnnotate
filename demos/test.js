@@ -1,24 +1,7 @@
-/*
 
 
-
-
-
-
-
-
-
-TODO: revisit best way to append to body/modify body in log injector...
-
-
-
-
-
-
-
-
-
-*/
+var a = true;
+var b = false;
 
 // a=5;
 // var test = function(a,b,c){

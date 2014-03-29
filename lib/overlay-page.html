@@ -44,7 +44,9 @@
 
 
                 $('.annotated-element').on('mouseenter', function(){
-                    annotationElement.html($(this).data('annotation-value'));
+                    // Convert to string again because false is converted to a boolean - i.e. the bubble is empty
+                    var annotationValue = $(this).data('annotation-value').toString();
+                    annotationElement.html(annotationValue);
                     annotationElement.css({
                         top: $(this).offset().top - annotationElement.height() - 6,
                         left: $(this).offset().left
