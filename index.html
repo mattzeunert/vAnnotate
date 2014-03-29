@@ -1,38 +1,123 @@
 <!doctype html>
 <html>
-	<head>
-		<title>vAnnotate - annotate Javascript code with variable values from execution logs</title>
-	</head>
-	<body>
-		<style>
-		body {
-			line-height: 1.5em;
-		}
-		</style>
-		<h1>vAnnotate</h1>
+  <head>
+    <title>vAnnotate - Annotate Javascript variables with their values during execution</title>
+  </head>
+  <body>
+    <style>
+    * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    body {
+      line-height: 1.3em;
+      margin: 0;
+      font-family: 'Alegreya Sans', sans-serif;
+    }
+    h1 {
+        margin: 0;
+        margin-top: 60px;
+        margin-bottom: 15px;
+    }
+    .tagline {
+        margin-bottom: 30px;
+    }
+    .container {
+      width: 900px;
+      margin: auto;
+    }
+    .sidebar {
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .sidebar h2 {
+        background: #f59b00;
+        padding: 10px;
+        color: white;
+        margin: 0;
+    }
+    .sidebar-content {
+        border: 1px solid #f59b00;
+        padding: 10px;
+    }
+    header {
+        margin-bottom: 20px;
+        border-bottom: 2px solid black;
+    }
+    code {
+        background: #eee;
+        padding: 4px;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+    .image {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+    </style>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/grids-min.css">
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
 
-		<p>
-			vAnnotated annotates Javascript files with the values of local variables from when the program was running.
-		</p>
+    <a href="https://github.com/mattzeunert/vannotate"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
 
-		<a href="functions-and-variables.js.html">See an example of an annotated file</a>
-		<br><br>
-		<a href="https://github.com/mattzeunert/vAnnotate">vAnnotate on Github</a>
+    <header>
+        <div class="container">
+            <h1>vAnnotate</h1>
+            <div class="tagline">Annotate JS files with the values of local variables from when the program was running.</div>
+        </div>
+    </header>
 
-		<h2>How it works</h2>
+    <div class="container content">
+        <div class="pure-g-r">
+            <div class="pure-u-2-3" style="padding-right: 20px;">
+                <p>
+                    vAnnotate logs variable assignment, function calls etc during execution and then overlays
+                    the source code with the collected data.
+                </p>
 
-		<p>
-			vAnnotates requires a static html page that loads external Javascript code.
-		</p>
-		<p>
-			The vAnnotate command (installable using `npm install vAnnotate -g`) then creates a local server that can be used to open the html file (At http://localhost:3000/filename.html). 
-			When the browser requests the referenced Javascript code vAnnotate injects logging code to keep of variable assignments etc.
-		</p>
-		<p>
-			Then the annotated files can be viewed at <a href="http://localhost:3000/vAnnotate/results/">http://localhost:3000/vAnnotate/results/</a>
-		</p>
-		
-		
+                <p>
+                    For example the underscore.js test suite runs this code to find even numbers:
+                </p>
+                <code>
+                    _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+                </code>
+                <p>
+                    When you open the test suite html file in vAnnotate this is the resulting output:
+                </p>
 
-	</body>
+                <img src="underscore.png" style="width: 80%; margin-left: 10%" class="image"><br>
+                <br><br>
+
+                <center>
+                    <a href="functions-and-variables.js.html">See annotations output for a simple file</a>
+
+                    <br><br>
+                    <a href="https://github.com/mattzeunert/vAnnotate" style="padding: 10px;border: 1px solid #ddd;color: #f59b00;border-radius: 4px;">vAnnotate on Github</a>
+                </center>
+                <br><br><br>
+            </div>
+            <div class="pure-u-1-3 sidebar">
+                <h2>Install vAnnotate</h2>
+                <div class="sidebar-content">
+                    <p>
+                        vAnnotate is on npm:
+                    </p>
+                    <code>
+                        sudo npm install -g vannotate
+                    </code>
+                    <p>
+                        Then run <code>vAnnotate</code> in a folder containing a static website.
+                        The directory will be served at <a href="http://localhost:4000">localhost:4000</a> and when you open an html file
+                        the Javascript code it loads will be annotated.<br><br>
+                        You can see annotated files at <a href="http://localhost:4000/vAnnotate/results">localhost:4000/vAnnotate/results</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
 </html>
