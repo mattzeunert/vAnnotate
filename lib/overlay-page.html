@@ -1,62 +1,62 @@
 <!doctype html>
 <html>
-	<body>
-		<style>
-			.annotated-element {
-				display: inline-block;
-				border: 1px solid #ff7777;
-				padding: 5px;
-				padding-bottom: 2px;
-				padding-top: 2px;
-				margin-top: 2px;
-				margin-bottom: 2px;
-			}
-			.annotated-element:hover {
-				background: #ffaaaa
-			}
+    <body>
+        <style>
+            .annotated-element {
+                display: inline-block;
+                border: 1px solid #ff7777;
+                padding: 5px;
+                padding-bottom: 2px;
+                padding-top: 2px;
+                margin-top: 2px;
+                margin-bottom: 2px;
+            }
+            .annotated-element:hover {
+                background: #ffaaaa
+            }
 
-			.annotation {
-				position: absolute;
-				background: rgba(0,0,0,.8);
-				padding: 5px;
-				padding-top: 2px;
-				padding-bottom: 2px;
-				border-radius: 5px;
-				color: white;
-			}
+            .annotation {
+                position: absolute;
+                background: rgba(0,0,0,.8);
+                padding: 5px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                border-radius: 5px;
+                color: white;
+            }
 
-			pre {
-				font-family: Droid Sans;
-			}
-		</style>
-		<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+            pre {
+                font-family: Droid Sans;
+            }
+        </style>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
 
-		<pre>{{code}}</pre>
-		<script src='http://code.jquery.com/jquery-1.10.1.js'></script>
-
-
-		<script>
-			$(document).ready(function(){
-				var annotationElement = $('<div>')
-					.addClass('annotation')
-					.hide()
-					.appendTo('body');
+        <pre>{{code}}</pre>
+        <script src='http://code.jquery.com/jquery-1.10.1.js'></script>
 
 
-				$('.annotated-element').on('mouseenter', function(){
-					annotationElement.html($(this).data('annotation-value'));
-					annotationElement.css({
-						top: $(this).offset().top - annotationElement.height() - 6,
-						left: $(this).offset().left
-					})
-					annotationElement.show();
-				});
+        <script>
+            $(document).ready(function(){
+                var annotationElement = $('<div>')
+                    .addClass('annotation')
+                    .hide()
+                    .appendTo('body');
 
-				$('.annotated-element').on('mouseleave', function(){
-					annotationElement.hide();
-				});
 
-			});
-		</script>
-	</body>
+                $('.annotated-element').on('mouseenter', function(){
+                    annotationElement.html($(this).data('annotation-value'));
+                    annotationElement.css({
+                        top: $(this).offset().top - annotationElement.height() - 6,
+                        left: $(this).offset().left
+                    })
+                    annotationElement.show();
+                });
+
+                $('.annotated-element').on('mouseleave', function(){
+                    annotationElement.hide();
+                });
+
+            });
+        </script>
+    </body>
 </html>
