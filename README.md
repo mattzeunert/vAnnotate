@@ -5,6 +5,12 @@ Annotates variables in Javascript code with the values they take during executio
 
 You'll need a static html page that links Javascript files
 
+## Installation
+
+    sudo npm install -g vannotate
+
+(Or download the Github repo and run node lib/vAnnotate.)
+
 ## Usage
 
     vAnnotate
