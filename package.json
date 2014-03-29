@@ -33,7 +33,8 @@
     "mkdirp": "~0.3.5",
     "promised-io": "http://github.com/mattzeunert/promised-io/tarball/master",
     "handlebars": "~1.3.0",
-    "escape-html": "~1.0.1"
+    "escape-html": "~1.0.1",
+    "argparse": "~0.1.15"
   },
   "devDependencies": {
     "rimraf": "~2.2.5"
