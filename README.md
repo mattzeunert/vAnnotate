@@ -15,9 +15,9 @@ You'll need a static html page that links Javascript files
 
     vAnnotate
 
-This will make the current working directory accessible at [http://localhost:6000](http://localhost:6000).
+This will make the current working directory accessible at [http://localhost:7000](http://localhost:7000).
 
-In there you can open the static html file. vAnnotate will collect the annotation data and the annotated code is made available at [http://localhost:4000/vAnnotate/results](http://localhost:6000/vAnnotate/results).
+In there you can open the static html file. vAnnotate will collect the annotation data and the annotated code is made available at [http://localhost:7000/vAnnotate/results](http://localhost:7000/vAnnotate/results).
 
 ### Additional command-line options
 
