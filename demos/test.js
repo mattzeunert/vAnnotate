@@ -1,7 +1,38 @@
+var a = [1,2,3];
+
+var b = {
+    thing: 1,
+    list: [1,2]
+}
+
+var c = [
+    {
+        number: 'one'
+    },
+    {
+        number: 'two'
+    }
+]
 
 
-var a = true;
-var b = false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var a = true;
+// var b = false;
+
+
+
 
 // a=5;
 // var test = function(a,b,c){
@@ -12,52 +43,6 @@ var b = false;
 // //
 // // }
 // test(4,5,2);
-
-
-[1,2,3].map(function(num){return num * 2});
-
-
-var test = [1,2,3].map(function(num){return num * 2});
-console.log(test);
-
-
-
-
-
-
-var breaker = {};
-var each = function(obj, iterator, context) {
-  if (obj == null) return obj;
-  if (false && nativeForEach && obj.forEach === nativeForEach) {
-    obj.forEach(iterator, context);
-  } else if (obj.length === +obj.length) {
-    for (var i = 0, length = obj.length; i < length; i++) {
-      if (iterator.call(context, obj[i], i, obj) === breaker) return;
-    }
-  } else {
-    var keys = _.keys(obj);
-    for (var i = 0, length = keys.length; i < length; i++) {
-      if (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) return;
-    }
-  }
-  return obj;
-};
-
-var map = function(obj, iterator, context) {
-  var results = [];
-  if (obj == null) return results;
-  each(obj, function(value, index, list) {
-    results.push(iterator.call(context, value, index, list));
-  });
-  return results;
-};
-
-var res = map([1,2,3], function(n){
-  return n *2 ;
-})
-
-console.log(res);
-
 
 
 

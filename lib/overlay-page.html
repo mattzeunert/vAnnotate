@@ -47,9 +47,17 @@
                     // Convert to string again because false is converted to a boolean - i.e. the bubble is empty
                     var annotationValue = $(this).data('annotation-value').toString();
                     annotationElement.html(annotationValue);
+
+                    var top, left;
+                    top = $(this).offset().top - annotationElement.height() - 6;
+                    if (top < 0){
+                        top = $(this).offset().top + 20;
+                    }
+                    left = $(this).offset().left;
+
                     annotationElement.css({
-                        top: $(this).offset().top - annotationElement.height() - 6,
-                        left: $(this).offset().left
+                        top: top,
+                        left: left
                     })
                     annotationElement.show();
                 });
