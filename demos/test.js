@@ -1,9 +1,12 @@
 var a = [1,2,3];
+var a = ['1','2','3'];
 
 var b = {
     thing: 1,
     list: [1,2]
 }
+
+var a = 'sth';
 
 var c = [
     {
@@ -13,6 +16,12 @@ var c = [
         number: 'two'
     }
 ]
+
+var big = [];
+for (var i=0;i<1000;i++){
+    big.push(i);
+}
+(function(){return big})()
 
 
 

@@ -44,8 +44,8 @@
 
 
                 $('.annotated-element').on('mouseenter', function(){
-                    // Convert to string again because false is converted to a boolean - i.e. the bubble is empty
-                    var annotationValue = $(this).data('annotation-value').toString();
+                    // Use attr rather than data to avoid parsing of strings like 'false' or '[]'
+                    var annotationValue = $(this).attr('data-annotation-value');
                     annotationElement.html(annotationValue);
 
                     var top, left;
