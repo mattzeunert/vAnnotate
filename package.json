@@ -24,7 +24,6 @@
     "vAnnotate": "./bin/vAnnotate"
   },
   "dependencies": {
-    "jasmine-node": "~1.13.0",
     "esprima": "~1.0.4",
     "escodegen": "~1.0.1",
     "express": "~3.4.7",
@@ -37,6 +36,7 @@
     "argparse": "~0.1.15"
   },
   "devDependencies": {
-    "rimraf": "~2.2.5"
+    "rimraf": "~2.2.5",
+    "jasmine-node": "~1.13.0"
   }
 }
