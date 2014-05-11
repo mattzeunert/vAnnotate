@@ -21,7 +21,9 @@ function displayResults(setup, results){
     $('.code-body .line').each(function(){
         $(this).contents().each(function(){
             if (setup[logItemIndex] && pos === setup[logItemIndex].range[0]){
-                $(this).css('background', 'red')
+                $(this).addClass('annotated-element');
+                // TODO: escape results here as done in code-overlay.js
+                $(this).attr('data-annotation-value', results[logItemIndex])
                 logItemIndex++;
             }
             if (this.nodeType === 3){
@@ -32,6 +34,7 @@ function displayResults(setup, results){
        })
        pos++;
     });
+
 }
 
 
