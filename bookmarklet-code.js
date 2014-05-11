@@ -1,6 +1,6 @@
 
-// how to handle tabs??
-// TODO: handle different final new lines
+
+
 
 
 var code = '';$('.code-body .line').each(function(){
@@ -8,15 +8,22 @@ var code = '';$('.code-body .line').each(function(){
 });
 code = code.replace(/\u00A0/g, ' ');
 var fileHash = sha1(stripNonAsciiCharacters(code));
-console.log(fileHash)
 
-$.get('http://localhost:7001/results/' + fileHash, function(){
-    console.log(arguments)
+$.get('http://localhost:7001/results/' + fileHash, function(response){
+    if (response.setup && response.setup[0]){
+        displayResults(response.setup, response.results);
+    }
 });
 
-function displayResults(){
-    $('.code-body .line').slice(0,10000).each(function(){
+function displayResults(setup, results){
+    var logItemIndex = 0;
+    var pos = 0;
+    $('.code-body .line').each(function(){
         $(this).contents().each(function(){
+            if (setup[logItemIndex] && pos === setup[logItemIndex].range[0]){
+                $(this).css('background', 'red')
+                logItemIndex++;
+            }
             if (this.nodeType === 3){
                 pos += this.textContent.length;
             } else {

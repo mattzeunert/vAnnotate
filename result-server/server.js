@@ -13,6 +13,7 @@ app.get(/\/results\/.*/, function(req, res){
     var fileHash = req.path.replace('/results/', '');
 
     res.set('Access-Control-Allow-Origin', 'https://github.com');
+    res.set('Content-Type', 'application/json');
 
     var resultsFilePath = './results/' + fileHash + '.json';
     fs.exists(resultsFilePath, function(exists) {
