@@ -1,7 +1,10 @@
+var generalCss = '{{generalCss}}';
+var generalJs = '{{generalJs}}';
 
 
 
-
+$('body').append('<style>' + generalCss + '</style>');
+$('body').append('<script>' + generalJs + '</script>');
 
 var code = '';$('.code-body .line').each(function(){
     code+=$(this).text() + '\n'
@@ -34,7 +37,6 @@ function displayResults(setup, results){
        })
        pos++;
     });
-
 }
 
 
