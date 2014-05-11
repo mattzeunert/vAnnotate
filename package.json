@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "rimraf": "~2.2.5",
-    "jasmine-node": "~1.13.0"
+    "jasmine-node": "~1.13.0",
+    "grunt": "~0.4.4",
+    "grunt-contrib-watch": "~0.6.1"
   }
 }

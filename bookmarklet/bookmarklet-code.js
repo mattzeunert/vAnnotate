@@ -1,8 +1,6 @@
 var generalCss = '{{generalCss}}';
 var generalJs = '{{generalJs}}';
 
-
-
 $('body').append('<style>' + generalCss + '</style>');
 $('body').append('<script>' + generalJs + '</script>');
 
@@ -37,6 +35,8 @@ function displayResults(setup, results){
        })
        pos++;
     });
+
+    initializeAnnotations();
 }
 
 
