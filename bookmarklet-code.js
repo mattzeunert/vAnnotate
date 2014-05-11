@@ -1,7 +1,14 @@
 
-var code = '';$('.code-body .line').each(function(){code+=$(this).text() + '\n'});
+// how to handle tabs??
+// TODO: handle different final new lines
+
+
+var code = '';$('.code-body .line').each(function(){
+    code+=$(this).text() + '\n'
+});
 code = code.replace(/\u00A0/g, ' ');
-var fileHash = sha1(code);
+var fileHash = sha1(stripNonAsciiCharacters(code));
+console.log(fileHash)
 
 $.get('http://localhost:7001/results/' + fileHash, function(){
     console.log(arguments)
@@ -20,6 +27,10 @@ function displayResults(){
     });
 }
 
+
+function stripNonAsciiCharacters(str){
+    return str.replace(/[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g, '');
+}
 
 // https://github.com/kvz/phpjs/blob/master/functions/strings/sha1.js
 /*
