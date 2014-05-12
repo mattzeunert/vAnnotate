@@ -24,8 +24,10 @@ function displayResults(setup, results){
         $(this).contents().each(function(){
             if (setup[logItemIndex] && pos === setup[logItemIndex].range[0]){
                 $(this).addClass('annotated-element');
-                // TODO: escape results here as done in code-overlay.js
-                $(this).attr('data-annotation-value', results[logItemIndex])
+                if (results[logItemIndex]) {
+                    var annotationValue = (results[logItemIndex]).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
+                    $(this).attr('data-annotation-value', annotationValue);
+                }
                 logItemIndex++;
             }
             if (this.nodeType === 3){
@@ -40,6 +42,12 @@ function displayResults(setup, results){
     initializeAnnotations();
 }
 
+
+function htmlEscapeQuotes(str){
+    str = str.replace(/"/g, '&quot;');
+    str = str.replace(/'/g, '&#39;');
+    return str;
+}
 
 function stripNonAsciiCharacters(str){
     return str.replace(/[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g, '');
