@@ -19,23 +19,40 @@ $.get('http://localhost:7001/results/' + fileHash, function(response){
 function displayResults(setup, results){
     var logItemIndex = 0;
     var pos = 0;
+
     $('.code-body .line').each(function(){
         $(this).contents().each(function(){
-            if (setup[logItemIndex] && pos === setup[logItemIndex].range[0]){
+            var logItem = setup[logItemIndex];
+
+            if (logItem && pos >= logItem.range[0] && pos <= logItem.range[1]){
+                var annotationClass = 'js-annotation-index-' + logItemIndex;
+                $(this).attr('data-annotation-index', logItemIndex)
+                $(this).addClass(annotationClass);
                 $(this).addClass('annotated-element');
-                if (results[logItemIndex]) {
-                    var annotationValue = (results[logItemIndex]).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
-                    $(this).attr('data-annotation-value', annotationValue);
+                if ($('.' + annotationClass).length === 1){
+                    if (results[logItemIndex]) {
+                        var annotationValue = htmlEscapeQuotes(results[logItemIndex]).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
+                        $(this).attr('data-annotation-value', annotationValue);
+                    }
                 }
-                logItemIndex++;
+                else {
+                    $('.' + annotationClass).css('border-left-width', '0').css('padding-left', 0).css('padding-right', 0);
+                    $('.' + annotationClass).css('border-right-width', '0').css('padding-left', 0).css('padding-right', 0);
+                    $('.' + annotationClass).first().css('border-left-width', '1px').css('padding-left', 'inherit')
+                    $('.' + annotationClass).last().css('border-right-width', '1px').css('padding-right', 'inherit');
+                }
             }
             if (this.nodeType === 3){
                 pos += this.textContent.length;
             } else {
                 pos += $(this).text().length;
             }
-       })
-       pos++;
+
+            if (logItem && logItem.range[1] <= pos){
+                logItemIndex++;
+            }
+        })
+        pos++;
     });
 
     initializeAnnotations();
