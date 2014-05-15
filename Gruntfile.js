@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     grunt.registerTask('compile-bookmarklet', function(){
         function fileToString(filepath){
             var fileContents = grunt.file.read(filepath);
-            fileContents = fileContents.replace(/\n/g, '\\n').replace(/\'/g, '\\\'').replace(/\"/g, '\\\"');
+            fileContents = fileContents.replace(/\\/g,'\\\\').replace(/\n/g, '\\n').replace(/\'/g, '\\\'').replace(/\"/g, '\\\"');
             return fileContents;
         }
 

@@ -5,7 +5,7 @@ $('body').append('<style>' + generalCss + '</style>');
 $('body').append('<script>' + generalJs + '</script>');
 
 var code = '';$('.code-body .line').each(function(){
-    code+=$(this).text() + '\n'
+    code += $(this).text() + '\n';
 });
 code = code.replace(/\u00A0/g, ' ');
 var fileHash = sha1(stripNonAsciiCharacters(code));
@@ -29,27 +29,7 @@ function displayResults(setup, results){
                 $(this).attr('data-annotation-index', logItemIndex)
                 $(this).addClass(annotationClass);
                 $(this).addClass('annotated-element');
-                if ($('.' + annotationClass).length === 1){
-                    if (results[logItemIndex]) {
-                        var result = results[logItemIndex];
-                        var lines = result.split('\n');
-                        var content = '';
-                        var title = '';
-                        if (lines.length == 1){
-                            content = formatAndEscapeString(result);
-                        }
-                        else {
-                            title = lines.shift();
-                            content = lines.join('\n')
-                        }
-
-                        function formatAndEscapeString(str){
-                            return htmlEscapeQuotes(str).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
-                        }
-                        $(this).attr('data-annotation-value', content);
-                    }
-                }
-                else {
+                if ($('.' + annotationClass).length > 1){
                     $('.' + annotationClass).css('border-left-width', '0').css('padding-left', 0).css('padding-right', 0);
                     $('.' + annotationClass).css('border-right-width', '0').css('padding-left', 0).css('padding-right', 0);
                     $('.' + annotationClass).first().css('border-left-width', '1px').css('padding-left', 'inherit')
@@ -69,7 +49,7 @@ function displayResults(setup, results){
         pos++;
     });
 
-    initializeAnnotations();
+    initializeAnnotations(results);
 }
 
 
