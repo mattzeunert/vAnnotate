@@ -32,8 +32,22 @@ function displayResults(setup, results){
                 $(this).addClass('annotated-element');
                 if ($('.' + annotationClass).length === 1){
                     if (results[logItemIndex]) {
-                        var annotationValue = htmlEscapeQuotes(results[logItemIndex]).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
-                        $(this).attr('data-annotation-value', annotationValue);
+                        var result = results[logItemIndex];
+                        var lines = result.split('\n');
+                        var content = '';
+                        var title = '';
+                        if (lines.length == 1){
+                            content = formatAndEscapeString(result);
+                        }
+                        else {
+                            title = lines.shift();
+                            content = lines.join('\n')
+                        }
+
+                        function formatAndEscapeString(str){
+                            return htmlEscapeQuotes(str).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
+                        }
+                        $(this).attr('data-annotation-value', content);
                     }
                 }
                 else {
