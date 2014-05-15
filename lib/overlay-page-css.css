@@ -3,7 +3,7 @@
     padding-bottom: 1px; /* So the box shadow isn't right next to underscores */
 }
 .annotated-element.hover {
-    background: #ccc;
+    background: #bbb;
 }
 
 .annotation {
@@ -11,7 +11,7 @@
     padding: 5px;
     background: rgba(254, 254,254, .95);
     color: black;
-    box-shadow: 1px 1px 4px #ccc;
+    box-shadow: 1px 1px 4px #bbb;
 }
 .annotation .content {
     font-family: Consolas, monospace;
@@ -21,6 +21,6 @@
     padding-bottom: 1px;
     margin-bottom: 8px;
     font-size: 16px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #bbb;
 }
 
