@@ -26,6 +26,7 @@ module.exports = function(grunt) {
         bookmarkletJs = bookmarkletJs.replace('{{generalJs}}', generalJs);
 
         grunt.file.write('bookmarklet.js', bookmarkletJs)
+        grunt.file.write('chrome-extension/content-script.js', bookmarkletJs)
 
     })
 
