@@ -35,6 +35,7 @@ function displayResults(setup, results){
                     $('.' + annotationClass).first().css('border-left-width', '1px').css('padding-left', 'inherit')
                     $('.' + annotationClass).last().css('border-right-width', '1px').css('padding-right', 'inherit');
                 }
+                $(this).attr('data-debug-start-index', pos);
                 if (results[logItemIndex] === undefined){
                     $(this).addClass('no-logging-result')
                 }
