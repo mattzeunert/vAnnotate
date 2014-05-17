@@ -35,6 +35,9 @@ function displayResults(setup, results){
                     $('.' + annotationClass).first().css('border-left-width', '1px').css('padding-left', 'inherit')
                     $('.' + annotationClass).last().css('border-right-width', '1px').css('padding-right', 'inherit');
                 }
+                if (results[logItemIndex] === undefined){
+                    $(this).addClass('no-logging-result')
+                }
             }
             if (this.nodeType === 3){
                 pos += this.textContent.length;

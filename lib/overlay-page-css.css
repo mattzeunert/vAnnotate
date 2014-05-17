@@ -2,6 +2,9 @@
     box-shadow: 0px 1px #7070ff; /* 1px outline bottom */
     padding-bottom: 1px; /* So the box shadow isn't right next to underscores */
 }
+.annotated-element.no-logging-result {
+    box-shadow: 0px 1px #bbb;
+}
 .annotated-element.hover {
     background: #eee;
 }
