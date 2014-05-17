@@ -3,7 +3,7 @@
     padding-bottom: 1px; /* So the box shadow isn't right next to underscores */
 }
 .annotated-element.hover {
-    background: #bbb;
+    background: #eee;
 }
 
 .annotation {
