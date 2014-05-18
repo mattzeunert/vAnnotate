@@ -5,10 +5,26 @@ var generalJs = 'function initializeAnnotations(results){\n    function hideBubb
 $('body').append('<style>' + generalCss + '</style>');
 $('body').append('<script>' + generalJs + '</script>');
 
-var code = '';$('.code-body .line').each(function(){
-    code += $(this).text() + '\n';
+var code = '';
+var lineElements;
+if ($('.code-body .line').length > 0){
+    // github.com
+    lineElements = $('.code-body .line')
+} else {
+    //gist.github.com
+    lineElements = $('.line-pre .line');
+}
+lineElements.each(function(){
+    var text = $(this).text();
+    // Replace non breaking spaces
+    text = text.replace(/\u00A0/g, ' ');
+    // Pygments puts nbsp's into empty lines, so strip them out...
+    if (text == ' '){
+        text = '';
+    }
+    code += text + '\n';
 });
-code = code.replace(/\u00A0/g, ' ');
+console.log('code', '---' + code + '---')
 var fileHash = sha1(stripNonAsciiCharacters(code));
 
 $.get('http://localhost:7001/results/' + fileHash, function(response){
@@ -21,7 +37,7 @@ function displayResults(setup, results){
     var logItemIndex = 0;
     var pos = 0;
 
-    $('.code-body .line').each(function(){
+    lineElements.each(function(){
         $(this).contents().each(function(){
             var logItem = setup[logItemIndex];
 

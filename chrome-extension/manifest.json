@@ -3,13 +3,14 @@
     "name": "vAnnotate",
     "version": "0.1",
     "content_scripts": [{
-        "matches": ["https://github.com/*"],
+        "matches": ["https://github.com/*", "https://gist.github.com/*"],
         "js": [
             "jquery-2.1.1.js",
             "content-script.js"
         ]
     }],
     "permissions": [
-        "https://github.com/*"
+        "https://github.com/*",
+        "https://gist.github.com/*"
     ]
 }
