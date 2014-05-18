@@ -57,16 +57,6 @@ function displayResults(setup, results){
 }
 
 
-function htmlEscapeQuotes(str){
-    str = str.replace(/"/g, '&quot;');
-    str = str.replace(/'/g, '&#39;');
-    return str;
-}
-
-function stripNonAsciiCharacters(str){
-    return str.replace(/[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g, '');
-}
-
 // https://github.com/kvz/phpjs/blob/master/functions/strings/sha1.js
 /*
 Copyright (c) 2013 Kevin van Zonneveld (http://kvz.io)
