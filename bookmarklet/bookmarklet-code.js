@@ -5,7 +5,7 @@ $('body').append('<style>' + generalCss + '</style>');
 $('body').append('<script>' + generalJs + '</script>');
 
 function stripFinalLineBreaks(str){
-    var lines = str.split('\n').reverse();
+    var lines = str.split('\n');
     // Github strips out final new lines in gists, so always strip them
     var reversedLines = lines.reverse();
     for (var i=0; i< reversedLines.length;i++){
@@ -41,6 +41,8 @@ lineElements.each(function(){
     code += text + '\n';
 });
 code = stripFinalLineBreaks(code)
+
+code = code.replace(/\n/g,'\n');
 console.log('code', '---' + code + '---')
 var fileHash = sha1(stripNonAsciiCharacters(code));
 
