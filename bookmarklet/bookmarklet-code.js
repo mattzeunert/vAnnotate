@@ -4,6 +4,23 @@ var generalJs = '{{generalJs}}';
 $('body').append('<style>' + generalCss + '</style>');
 $('body').append('<script>' + generalJs + '</script>');
 
+function stripFinalLineBreaks(str){
+    var lines = str.split('\n').reverse();
+    // Github strips out final new lines in gists, so always strip them
+    var reversedLines = lines.reverse();
+    for (var i=0; i< reversedLines.length;i++){
+        if (reversedLines[i] == ''){
+            reversedLines.shift();
+            i--;
+        }
+        else {
+            break;
+        }
+    }
+    lines = reversedLines.reverse();
+    return lines.join('\n')
+}
+
 var code = '';
 var lineElements;
 if ($('.code-body .line').length > 0){
@@ -23,6 +40,7 @@ lineElements.each(function(){
     }
     code += text + '\n';
 });
+code = stripFinalLineBreaks(code)
 console.log('code', '---' + code + '---')
 var fileHash = sha1(stripNonAsciiCharacters(code));
 
