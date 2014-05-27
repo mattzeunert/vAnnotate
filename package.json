@@ -33,7 +33,8 @@
     "promised-io": "http://github.com/mattzeunert/promised-io/tarball/master",
     "handlebars": "~1.3.0",
     "escape-html": "~1.0.1",
-    "argparse": "~0.1.15"
+    "argparse": "~0.1.15",
+    "walk": "~2.3.3"
   },
   "devDependencies": {
     "rimraf": "~2.2.5",
