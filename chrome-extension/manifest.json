@@ -2,6 +2,7 @@
     "manifest_version": 2,
     "name": "vAnnotate",
     "version": "0.1",
+    "default_locale": "en",
     "content_scripts": [{
         "matches": ["https://github.com/*", "https://gist.github.com/*"],
         "js": [

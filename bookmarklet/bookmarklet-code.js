@@ -46,7 +46,7 @@ code = code.replace(/\n/g,'\n');
 console.log('code', '---' + code + '---')
 var fileHash = sha1(stripNonAsciiCharacters(code));
 
-$.get('https://vannotate.s3.amazonaws.com/v1/' + fileHash, function(response){
+$.get('https://vannotate.s3.amazonaws.com/v1/' + fileHash + '.json', function(response){
     if (response.setup && response.setup[0]){
         displayResults(response.setup, response.results);
     }
