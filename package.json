@@ -34,7 +34,9 @@
     "handlebars": "~1.3.0",
     "escape-html": "~1.0.1",
     "argparse": "~0.1.15",
-    "walk": "~2.3.3"
+    "walk": "~2.3.3",
+    "jquery": "~2.1.1",
+    "jquery-deferred": "~0.3.0"
   },
   "devDependencies": {
     "rimraf": "~2.2.5",
