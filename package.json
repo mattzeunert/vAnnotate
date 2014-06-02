@@ -36,7 +36,8 @@
     "argparse": "~0.1.15",
     "walk": "~2.3.3",
     "jquery": "~2.1.1",
-    "jquery-deferred": "~0.3.0"
+    "jquery-deferred": "~0.3.0",
+    "request": "~2.36.0"
   },
   "devDependencies": {
     "rimraf": "~2.2.5",
