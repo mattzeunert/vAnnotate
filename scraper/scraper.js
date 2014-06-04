@@ -2,7 +2,9 @@ $ = require('jquery-deferred');
 var exec = require('child_process').exec;
 
 var repos = [
-    'jashkenas/underscore'
+    //'jashkenas/underscore',
+    //'jashkenas/backbone',
+    'mattzeunert/vAnnotate',
 ]
 
 var scrapingPath = process.env['HOME'] + '/vAScraping/';
@@ -44,6 +46,7 @@ function continueProcessing(){
             console.log('unzipped')
             cmd = 'node lib/vAnnotate ' + unzipDirectory;
             cmd += ' --htmlFileV2=ALL --outputDirectoryV2=' + resultPath;
+            console.log('running command: ' + cmd)
             exec(cmd, function(){
                 i++;
                 if (i==repos.length){
