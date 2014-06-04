@@ -4,7 +4,11 @@ var exec = require('child_process').exec;
 var repos = [
     //'jashkenas/underscore',
     //'jashkenas/backbone',
-    'mattzeunert/vAnnotate',
+    //'mattzeunert/vAnnotate',
+    // 'bgrins/TinyColor',
+    // 'mattzeunert/minmal-Backbone.localStorage-example',
+    // 'jdsharp/jquery-examples',
+    'tastejs/todomvc/gh-pages',
 ]
 
 var scrapingPath = process.env['HOME'] + '/vAScraping/';
@@ -33,7 +37,16 @@ function continueProcessing(){
     var scraperRoot = unzipPath
     var filePath = scraperRoot + repoId + '.zip'
     var file = fs.createWriteStream(filePath);
-    var url = 'https://codeload.github.com/' + repos[i] + '/zip/master';
+
+    var repo = repos[i]
+    var branch = 'master';
+    var repoParts = repo.split('/');
+    if (repoParts.length > 2){
+        branch = repoParts.pop();
+        repo = repoParts.join('/')
+    }
+
+    var url = 'https://codeload.github.com/' + repo + '/zip/' + branch;
     console.log('Fetching, ', url)
     var request = https.get(url, function(response) {
         response.pipe(file);
