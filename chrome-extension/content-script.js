@@ -5,6 +5,8 @@ var generalJs = 'function initializeAnnotations(results){\n    function hideBubb
 $('body').append('<style>' + generalCss + '</style>');
 $('body').append('<script>' + generalJs + '</script>');
 
+
+
 function stripFinalLineBreaks(str){
     var lines = str.split('\n');
     // Github strips out final new lines in gists, so always strip them
@@ -22,76 +24,96 @@ function stripFinalLineBreaks(str){
     return lines.join('\n')
 }
 
-var code = '';
-var lineElements;
-if ($('.code-body .line').length > 0){
-    // github.com
-    lineElements = $('.code-body .line')
-} else {
-    //gist.github.com
-    lineElements = $('.line-pre .line');
-}
-lineElements.each(function(){
-    var text = $(this).text();
-    // Replace non breaking spaces
-    text = text.replace(/\u00A0/g, ' ');
-    // Pygments puts nbsp's into empty lines, so strip them out...
-    if (text == ' '){
-        text = '';
+function init(){
+    var pathname = document.location.pathname;
+    var isViewingJsFile = pathname.substr(pathname.length - 3) === '.js'
+    if (!isViewingJsFile){
+        return;
     }
-    code += text + '\n';
-});
-code = stripFinalLineBreaks(code)
 
-code = code.replace(/\n/g,'\n');
-console.log('code', '---' + code + '---')
-var fileHash = sha1(stripNonAsciiCharacters(code));
-
-$.get('https://vannotate.s3.amazonaws.com/v1/' + fileHash + '.json', function(response){
-    if (response.setup && response.setup[0]){
-        displayResults(response.setup, response.results);
+    var code = '';
+    var lineElements;
+    if ($('.code-body .line').length > 0){
+        // github.com
+        lineElements = $('.code-body .line')
+    } else {
+        //gist.github.com
+        lineElements = $('.line-pre .line');
     }
-});
-
-function displayResults(setup, results){
-    var logItemIndex = 0;
-    var pos = 0;
-
     lineElements.each(function(){
-        $(this).contents().each(function(){
-            var logItem = setup[logItemIndex];
+        var text = $(this).text();
+        // Replace non breaking spaces
+        text = text.replace(/\u00A0/g, ' ');
+        // Pygments puts nbsp's into empty lines, so strip them out...
+        if (text == ' '){
+            text = '';
+        }
+        code += text + '\n';
+    });
+    code = stripFinalLineBreaks(code)
 
-            if (logItem && pos >= logItem.range[0] && pos <= logItem.range[1]){
-                var annotationClass = 'js-annotation-index-' + logItemIndex;
-                $(this).attr('data-annotation-index', logItemIndex)
-                $(this).addClass(annotationClass);
-                $(this).addClass('annotated-element');
-                if ($('.' + annotationClass).length > 1){
-                    $('.' + annotationClass).css('border-left-width', '0').css('padding-left', 0).css('padding-right', 0);
-                    $('.' + annotationClass).css('border-right-width', '0').css('padding-left', 0).css('padding-right', 0);
-                    $('.' + annotationClass).first().css('border-left-width', '1px').css('padding-left', 'inherit')
-                    $('.' + annotationClass).last().css('border-right-width', '1px').css('padding-right', 'inherit');
-                }
-                $(this).attr('data-debug-start-index', pos);
-                if (results[logItemIndex] === undefined){
-                    $(this).addClass('no-logging-result')
-                }
-            }
-            if (this.nodeType === 3){
-                pos += this.textContent.length;
-            } else {
-                pos += $(this).text().length;
-            }
+    code = code.replace(/\n/g,'\n');
+    //console.log('code', '---' + code + '---')
+    var fileHash = sha1(stripNonAsciiCharacters(code));
 
-            if (logItem && logItem.range[1] <= pos){
-                logItemIndex++;
-            }
-        })
-        pos++;
+    $.get('https://vannotate.s3.amazonaws.com/v1/' + fileHash + '.json', function(response){
+        if (response.setup && response.setup[0]){
+            displayResults(response.setup, response.results);
+        }
     });
 
-    initializeAnnotations(results);
+    function displayResults(setup, results){
+        var logItemIndex = 0;
+        var pos = 0;
+
+        lineElements.each(function(){
+            $(this).contents().each(function(){
+                var logItem = setup[logItemIndex];
+
+                if (logItem && pos >= logItem.range[0] && pos <= logItem.range[1]){
+                    var annotationClass = 'js-annotation-index-' + logItemIndex;
+                    $(this).attr('data-annotation-index', logItemIndex)
+                    $(this).addClass(annotationClass);
+                    $(this).addClass('annotated-element');
+                    if ($('.' + annotationClass).length > 1){
+                        $('.' + annotationClass).css('border-left-width', '0').css('padding-left', 0).css('padding-right', 0);
+                        $('.' + annotationClass).css('border-right-width', '0').css('padding-left', 0).css('padding-right', 0);
+                        $('.' + annotationClass).first().css('border-left-width', '1px').css('padding-left', 'inherit')
+                        $('.' + annotationClass).last().css('border-right-width', '1px').css('padding-right', 'inherit');
+                    }
+                    $(this).attr('data-debug-start-index', pos);
+                    if (results[logItemIndex] === undefined){
+                        $(this).addClass('no-logging-result')
+                    }
+                }
+                if (this.nodeType === 3){
+                    pos += this.textContent.length;
+                } else {
+                    pos += $(this).text().length;
+                }
+
+                if (logItem && logItem.range[1] <= pos){
+                    logItemIndex++;
+                }
+            })
+            pos++;
+        });
+
+        initializeAnnotations(results);
+    }
 }
+
+init();
+var currentPath = document.location.pathname;
+setInterval(function(){
+    if (currentPath !== document.location.pathname){
+        currentPath = document.location.pathname;
+        init();
+    }
+}, 2000)
+
+
+
 
 
 // https://github.com/kvz/phpjs/blob/master/functions/strings/sha1.js
