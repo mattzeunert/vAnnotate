@@ -36,10 +36,7 @@ else {
     var lines = $('.highlight pre').html().split('\n');
     var html = ''
     $.each(lines, function(i, line){
-        if (line === ''){
-            line = '&nbsp;'
-        }
-        html += '<div class="line">' + line + "</div>"
+        html += '<div class="line" style="height: 19px;">' + line + "</div>"
     });
     $('.highlight pre').html(html)
     lineElements = $('.highlight pre .line');
@@ -79,7 +76,9 @@ function displayResults(setup, results){
         $(this).contents().each(function(){
             var logItem = setup[logItemIndex];
 
-            console.log('at pos', pos, $(this).text())
+            try{
+            console.log('at pos', pos, $(this).text(), 'logitem is', logItem.range[0], results[logItemIndex])
+        }catch(err){}
 
             if (logItem && pos >= logItem.range[0] && pos <= logItem.range[1]){
                 var annotationClass = 'js-annotation-index-' + logItemIndex;
