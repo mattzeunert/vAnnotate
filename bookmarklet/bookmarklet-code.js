@@ -55,7 +55,6 @@ if (!window.vAnnotateResults){
     code = stripFinalLineBreaks(code)
 
     code = code.replace(/\n/g,'\n');
-    console.log('code', '---' + code + '---')
     var fileHash = sha1(stripNonAsciiCharacters(code));
 
     $.get('https://vannotate.s3.amazonaws.com/v1/' + fileHash + '.json', function(response){
@@ -74,10 +73,6 @@ function displayResults(setup, results){
     lineElements.each(function(){
         $(this).contents().each(function(){
             var logItem = setup[logItemIndex];
-
-            try{
-            console.log('at pos', pos, $(this).text(), 'logitem is', logItem.range[0], results[logItemIndex])
-        }catch(err){}
 
             if (logItem && pos >= logItem.range[0] && pos <= logItem.range[1]){
                 var annotationClass = 'js-annotation-index-' + logItemIndex;
