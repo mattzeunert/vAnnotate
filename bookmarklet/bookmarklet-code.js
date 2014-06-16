@@ -2,7 +2,7 @@ var generalCss = '{{generalCss}}';
 var generalJs = '{{generalJs}}';
 
 $('body').append('<style>' + generalCss + '</style>');
-$('body').append('<script>' + generalJs + '</script>');
+$('body').append('<scr' + 'ipt>' + generalJs + '</scr' + 'ipt>');
 
 function stripFinalLineBreaks(str){
     var lines = str.split('\n');
@@ -26,31 +26,49 @@ var lineElements;
 if ($('.code-body .line').length > 0){
     // github.com
     lineElements = $('.code-body .line')
-} else {
+} else if ($('.line-pre .line').length > 0){
     //gist.github.com
     lineElements = $('.line-pre .line');
 }
-lineElements.each(function(){
-    var text = $(this).text();
-    // Replace non breaking spaces
-    text = text.replace(/\u00A0/g, ' ');
-    // Pygments puts nbsp's into empty lines, so strip them out...
-    if (text == ' '){
-        text = '';
-    }
-    code += text + '\n';
-});
-code = stripFinalLineBreaks(code)
+else {
+    // Normal pygments
+    var lines = $('.highlight pre').html().split('\n');
+    var html = ''
+    $.each(lines, function(i, line){
+        if (line === ''){
+            line = '&nbsp;'
+        }
+        html += '<div class="line">' + line + "</div>"
+    });
+    $('.highlight pre').html(html)
+    lineElements = $('.highlight pre .line');
+}
 
-code = code.replace(/\n/g,'\n');
-console.log('code', '---' + code + '---')
-var fileHash = sha1(stripNonAsciiCharacters(code));
+if (!window.vAnnotateResults){
+    lineElements.each(function(){
+        var text = $(this).text();
+        // Replace non breaking spaces
+        text = text.replace(/\u00A0/g, ' ');
+        // Pygments puts nbsp's into empty lines, so strip them out...
+        if (text == ' '){
+            text = '';
+        }
+        code += text + '\n';
+    });
+    code = stripFinalLineBreaks(code)
 
-$.get('https://vannotate.s3.amazonaws.com/v1/' + fileHash + '.json', function(response){
-    if (response.setup && response.setup[0]){
-        displayResults(response.setup, response.results);
-    }
-});
+    code = code.replace(/\n/g,'\n');
+    console.log('code', '---' + code + '---')
+    var fileHash = sha1(stripNonAsciiCharacters(code));
+
+    $.get('https://vannotate.s3.amazonaws.com/v1/' + fileHash + '.json', function(response){
+        if (response.setup && response.setup[0]){
+            displayResults(response.setup, response.results);
+        }
+    });
+} else {
+    displayResults(window.vAnnotateResults.setup, window.vAnnotateResults.results);
+}
 
 function displayResults(setup, results){
     var logItemIndex = 0;
@@ -59,6 +77,8 @@ function displayResults(setup, results){
     lineElements.each(function(){
         $(this).contents().each(function(){
             var logItem = setup[logItemIndex];
+
+            console.log('at pos', pos, $(this).text())
 
             if (logItem && pos >= logItem.range[0] && pos <= logItem.range[1]){
                 var annotationClass = 'js-annotation-index-' + logItemIndex;

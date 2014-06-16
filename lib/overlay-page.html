@@ -4,9 +4,11 @@
         <title>{{filename}} | vAnnotate annotations</title>
         <meta charset="utf-8">
     </head>
-    <body>
+    <body class="local-server">
         <style>
-
+            body {
+                margin: 0;
+            }
             pre {
                 font-family: Droid Sans;
             }
@@ -17,6 +19,11 @@
         <pre>{{code}}</pre>
         <script src='http://code.jquery.com/jquery-1.10.1.js'></script>
 
+        <script>
+        $(document).ready(function(){
+           {{bookmarkletCode}}
+        });
+        </script>
 
         <script>
             $(document).ready(function(){

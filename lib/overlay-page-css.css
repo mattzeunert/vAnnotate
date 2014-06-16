@@ -28,3 +28,17 @@
     border-bottom: 1px solid #bbb;
 }
 
+body.local-server {
+    margin-top: -20px;
+}
+body.local-server .annotated-element.hover{
+    color: red;
+    background: transparent;
+}
+body.local-server .annotation {
+    position: absolute;
+    padding: 5px;
+    background: rgba(1, 1,1, .95);
+    color: #fafafa;
+    box-shadow: 1px 1px 4px #bbb;
+}
