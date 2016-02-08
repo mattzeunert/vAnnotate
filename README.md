@@ -34,3 +34,7 @@ logging instructions into the file, for example for function calls and variable 
 
 - Logging assignments to member expressions can currently have side effects. For example if you run `a[fn()] = b` fn will be called twice - once for the assignment and once for the logging call.
 To fix this we need to move the object properties to separate variables before doing the assignment and the logging.
+
+## Running the tests
+
+Install PhantomJS and jasmine-node, then run `jasmine-node .`.
