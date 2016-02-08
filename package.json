@@ -1,6 +1,6 @@
 {
   "name": "vannotate",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Generate Javascript code annotations",
   "main": "./lib/vAnnotate",
   "scripts": {
